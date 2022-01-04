@@ -34,8 +34,12 @@ obs_geo <- file.path(dir_data, "obs.geojson")
 
 # get species occurrence data from GBIF with coordinates
 (res <- spocc::occ(
-  query = 'Bradypus variegatus', # sloth 
-  from = 'gbif', has_coords = T))
+# query = 'Bradypus variegatus', # sloth
+# query = 'Phengaris alcon', # Alcon blue
+# query = 'Camponotus pennsylvanicus', # ant
+  query = 'Latrodectus mactans', # black widow
+  from = 'gbif', has_coords = T,
+  limit = 10,000))
 ```
 
 ```{r}
@@ -55,6 +59,12 @@ readr::write_csv(df, obs_csv)
 sf::write_sf(obs, obs_geo)
 
 # show points on map
-mapview::mapview(obs, map.types = "Stamen.Terrain")
+# mapview::mapview(obs, map.types = "Stamen.Terrain")
+mapview::mapview(obs, map.types = "Stamen.Watercolor")
 ```
+
+## Question 1. How many observations total are in GBIF for your species? (Hint: ?occ)
+
+
+## Question 2. Do you see any odd observations, like marine species on land or vice versa? If so, please see the Data Cleaning and explain what you did to fix or remove these points.
 
