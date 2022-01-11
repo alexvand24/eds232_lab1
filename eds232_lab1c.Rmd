@@ -165,3 +165,5 @@ p2 <- vip::vip(mdl_permutation, bar = FALSE)
 gridExtra::grid.arrange(p1, p2, nrow = 1)
 ```
 
+
+TEST 4 SAM & KAT<3
