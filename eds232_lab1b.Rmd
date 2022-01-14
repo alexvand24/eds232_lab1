@@ -119,6 +119,7 @@ if (!interactive())
   maxent()
 ```
 
+
 ```{r}
 # get environmental rasters
 # NOTE: the first part of Lab 1. SDM - Explore got updated to write this clipped environmental raster stack
