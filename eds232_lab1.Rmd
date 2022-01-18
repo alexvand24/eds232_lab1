@@ -32,7 +32,7 @@ dir.create(dir_data, showWarnings = F, recursive = T)
 ```{r}
 obs_csv <- file.path(dir_data, "obs.csv")
 obs_geo <- file.path(dir_data, "obs.geojson")
-redo    <- FALSE
+redo    <- TRUE
 
 if (!file.exists(obs_geo) | redo){
   # get species occurrence data from GBIF with coordinates
@@ -42,7 +42,7 @@ if (!file.exists(obs_geo) | redo){
 # query = 'Camponotus pennsylvanicus', # ant
   query = 'Latrodectus mactans', # black widow
   from  = 'gbif', has_coords = T,
-  limit = 10,000))
+  limit = 10000))
   
   # extract data frame from result
   df <- res$gbif$data[[1]] 
@@ -67,7 +67,7 @@ mapview::mapview(obs, map.types = "Stamen.Watercolor")
 
 ## Question 1.
 #### *How many observations total are in GBIF for your species? (Hint: ?occ)*
-Found: 3,539 ???
+Found: 3,539*** OR 3,885???
 
 
 ## Question 2.
