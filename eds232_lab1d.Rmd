@@ -119,9 +119,9 @@ plot(wrld_simpl, add=TRUE, border='dark grey')
 ```
 
 
-## 3 Evaluate Evaluate: Model Performance
+## 3 Evaluate: Model Performance
 
-### 3.1 3.1 Area Under the Curve (AUC), Reciever Operater Characteristic (ROC) Curve and Confusion Matrix
+### 3.1 Area Under the Curve (AUC), Receiver Operater Characteristic (ROC) Curve and Confusion Matrix
 
 ```{r}
 pts_test_p <- pts_test %>% 
