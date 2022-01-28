@@ -29,6 +29,16 @@ dir.create(dir_data, showWarnings = F, recursive = T)
 ```
 
 
+## 1) Species: Latrodectus mactans
+
+## 2) Image:
+
+
+![Western black widow](/Users/asy/EDS232/eds232_lab1/Latrodectus_hesperus.jpg)
+
+
+## 3) Map:
+
 ```{r}
 obs_csv <- file.path(dir_data, "obs.csv")
 obs_geo <- file.path(dir_data, "obs.geojson")
@@ -40,7 +50,7 @@ if (!file.exists(obs_geo) | redo){
 # query = 'Bradypus variegatus', # sloth
 # query = 'Phengaris alcon', # Alcon blue
 # query = 'Camponotus pennsylvanicus', # ant
-  query = 'Latrodectus mactans', # black widow
+  query = 'Latrodectus hesperus', # western black widow
   from  = 'gbif', has_coords = T,
   limit = 10000))
   
@@ -65,15 +75,15 @@ nrow(obs) # number of rows
 mapview::mapview(obs, map.types = "Stamen.Watercolor")
 ```
 
-## Question 1.
-#### *How many observations total are in GBIF for your species? (Hint: ?occ)*
-Found: 3,539*** OR 3,885???
+## 4) Question:
+3,539 observations in GBIF
 
 
-## Question 2.
-#### *Do you see any odd observations, like marine species on land or vice versa? If so, please see the Data Cleaning and explain what you did to fix or remove these points.*
+## 5) Question:
+No known data points on water.
 
-## Get Environmental Data
+
+### Get Environmental Data
 
 ### Presence
 
@@ -101,13 +111,22 @@ env_layers <- sdmpredictors::list_layers(env_datasets_vec)
 DT::datatable(env_layers)
 ```
 
+## 6) Question:
+#### *What environmental layers did you choose as predictors? Can you find any support for these in the literature?*
+
+
 ```{r}
 # choose layers after some inspection and perhaps consulting literature
 env_layers_vec <- c("WC_alt", "WC_bio1", "WC_bio2", "ER_tri", "ER_topoWet")
 
 # get layers
 env_stack <- load_layers(env_layers_vec)
+```
 
+
+## 7) Rasters clipped to species range
+
+```{r}
 # interactive plot layers, hiding all but first (select others)
 # mapview(env_stack, hide = T) # makes the html too big for Github
 plot(env_stack, nc=2)
@@ -147,7 +166,7 @@ plot(env_stack, nc=2)
 ```
 
 
-### Pseudo-Absence
+## 8) Map with pseudo-absence points
 
 ```{r}
 absence_geo <- file.path(dir_data, "absence.geojson")
@@ -228,7 +247,7 @@ pts_env %>%
       pageLength = 20))
 ```
 
-## Term Plots
+## 9) Term Plots
 
 ```{r}
 pts_env %>% 

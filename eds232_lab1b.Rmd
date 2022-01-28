@@ -6,7 +6,7 @@ output: html_document
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE, messages = FALSE)
 ```
 
 ## 1. Explore
@@ -28,6 +28,8 @@ nrow(pts_env)
 datatable(pts_env, rownames = F)
 ```
 
+## 10) Plot of ggpairs
+
 ```{r}
 GGally::ggpairs(
   select(pts_env, -ID),
@@ -46,7 +48,7 @@ d <- pts_env %>%
 nrow(d)
 ```
 
-### 2.2 Linear Model
+## 11) Linear model output with range of values
 
 ```{r}
 # fit a linear model
@@ -65,7 +67,7 @@ range(y_predict)
 range(y_true)
 ```
 
-### 2.3 Generalized Linear Model
+## 12) Generalized Linear Model (GLM)
 
 ```{r}
 # fit a generalized linear model with a binomial logit link function
@@ -79,13 +81,15 @@ y_predict <- predict(mdl, d, type="response")
 range(y_predict)
 ```
 
+## 13) GLM termp plots
+
 ```{r}
 # show term plots
 termplot(mdl, partial.resid = TRUE, se = TRUE, main = F, ylim="free")
 ```
 
 
-### 2.4 Generalized Additive Model
+## 14) Generalized Additive Model (GAM)
 
 ```{r}
 librarian::shelf(mgcv)
@@ -98,14 +102,18 @@ mdl <- mgcv::gam(
 summary(mdl)
 ```
 
+## 15) GAM term plots
+
 ```{r}
 # show term plots
 plot(mdl, scale=0)
 ```
 
+## 16) Question:
+*Which GAM environmental variables, and even range of values, seem to contribute most towards presence (above 0 response) versus absence (below 0 response)?*
 
 
-### 2.5 Maxent (Maximum Entropy)
+## 17) Maxent (maximum entropy)
 
 ```{r}
 # load extra packages
@@ -128,6 +136,7 @@ env_stack <- stack(env_stack_grd)
 plot(env_stack, nc=2)
 ```
 
+## 18) Maxent variable contribution plot
 
 ```{r}
 # get presence-only observation points (maxent extracts raster values for you)
@@ -146,6 +155,8 @@ mdl <- read_rds(mdl_maxent_rds)
 plot(mdl)
 ```
 
+## 19) Maxent term plots
+
 ```{r}
 # plot term plots
 response(mdl)
@@ -161,3 +172,5 @@ data(wrld_simpl, package="maptools")
 plot(wrld_simpl, add=TRUE, border='dark grey')
 ```
 
+## 20) Question:
+*Which Maxent environmental variables, and even range of values, seem to contribute most towards presence (closer to 1 response) and how might this differ from the GAM results?*
