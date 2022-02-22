@@ -24,7 +24,10 @@ librarian::shelf(
   rsample,     # d: split train/test data
   skimr,       # d: skim summarize data table
   vip)         # X: variable importance
+```
 
+
+```{r}
 # options
 options(
   scipen = 999,

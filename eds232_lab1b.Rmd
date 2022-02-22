@@ -18,6 +18,10 @@ select <- dplyr::select # overwrite raster::select
 options(readr.show_col_types = F)
 
 dir_data    <- here("data/sdm")
+```
+
+
+```{r}
 pts_env_csv <- file.path(dir_data, "pts_env.csv")
 
 pts_env <- read_csv(pts_env_csv)

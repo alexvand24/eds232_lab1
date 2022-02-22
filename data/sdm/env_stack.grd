@@ -1,6 +1,6 @@
 [general]
 creator=R package 'raster'
-created=2022-01-28 06:23:45
+created=2022-02-22 21:41:52
 [georeference]
 nrows=1272
 ncols=3303
@@ -16,7 +16,7 @@ nbands=5
 bandorder=BIL
 minvalue=-187:-8.10000038146973:0.899999976158142:0:6.48000001907349
 maxvalue=6015:31.3999996185303:21.2999992370605:371.859985351562:16.1000003814697
-nodatavalue=-339999999999999996123846586046231871488
+nodatavalue=-3.4e+38
 [legend]
 legendtype=
 values=
